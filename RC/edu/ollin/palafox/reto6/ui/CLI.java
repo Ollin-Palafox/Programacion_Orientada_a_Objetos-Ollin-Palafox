@@ -1,5 +1,7 @@
-package edu.ollin.palafox.reto5.ui;
+package edu.ollin.palafox.reto6.ui;
+
 import java.util.Scanner;
+
 import static edu.ollin.palafox.reto5.process.Juegopalabras.ObtenerPalabra;
 
 /** en este apartado esta el menu de interfaz el cual esta creado para que solo te arroje los resultados con los que el usuario va a interactuar con dicho programa
