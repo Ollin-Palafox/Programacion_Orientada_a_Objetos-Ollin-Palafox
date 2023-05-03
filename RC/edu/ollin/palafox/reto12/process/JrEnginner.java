@@ -187,5 +187,18 @@ public class JrEnginner extends Empleado {
 
         return ultimoEmpleado;
     }
+    public static void imprimirPromedioEdad(String nombreArchivo) {
+        List<JrEnginner> listaJrEnginner = leerArchivoJrEnginner(nombreArchivo);
+
+        int sumaEdades = 0;
+        for (JrEnginner je : listaJrEnginner) {
+            sumaEdades += je.getEdad();
+        }
+
+        double promedioEdad = (double) sumaEdades / listaJrEnginner.size();
+
+        System.out.println("El promedio de edad es: " + promedioEdad);
+    }
+
 
 }

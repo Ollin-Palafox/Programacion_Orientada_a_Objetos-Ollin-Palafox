@@ -20,6 +20,7 @@ public class CLI {
             System.out.println("5. Filtro entre 20 y 25 años");
             System.out.println("6. Imprimir de manera alfabetica");
             System.out.println("7. Imprimir ultimo empleado teniendo en cuenta la edad y el nombre (alfabetico)");
+            System.out.println("8. Imprimir el promedio de la edad");
             System.out.println("0. Salir");
             System.out.print("Ingresa tu opción: ");
             int opcion = scanner.nextInt();
@@ -47,6 +48,9 @@ public class CLI {
                     break;
                 case 7:
                     encontrarUltimoEmpleado("C:\\Users\\ollin\\Downloads\\lista_jrenginner1.txt");
+                    break;
+                case 8:
+                    JrEnginner.imprimirPromedioEdad("C:\\Users\\ollin\\Downloads\\lista_jrenginner1.txt");
                     break;
                 case 0:
                     salir = true;
