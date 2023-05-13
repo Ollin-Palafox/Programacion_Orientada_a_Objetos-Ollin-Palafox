@@ -1,5 +1,8 @@
 package edu.ollin.palafox.RetoFinal.process;
+/**
 
+ La clase DatosJuego representa los atributos y comportamientos del juego.
+ */
 public class DatosJuego {
 
     // Atributos del Jugador
@@ -64,10 +67,6 @@ public class DatosJuego {
         this.hadasRescatadas = hadasRescatadas;
     }
 
-    public int getNuevaArea() {
-        return nuevaArea;
-    }
-
     public void setNuevaArea(int nuevaArea) {
         this.nuevaArea = nuevaArea;
     }
@@ -120,7 +119,21 @@ public class DatosJuego {
         this.hadasconCasa = hadasconCasa;
     }
 
-    // Constructor de la clase Juego
+    /**
+     * Constructor de la clase Juego
+     *
+     * @param nombre                   nombre del jugador
+     * @param vida                     vida inicial del jugador
+     * @param poder                    poder inicial del jugador
+     * @param materialesRecolectados   materiales recolectados por el jugador
+     * @param hadasRescatadas          cantidad de hadas rescatadas por el jugador
+     * @param poderMago                poder del mago
+     * @param vidaOgro                 vida del ogro
+     * @param poderOgro                poder del ogro
+     * @param hadasconCasa             cantidad de hadas en casas
+     * @param areaActual               área actual del jugador
+     * @param areaPresente             área presente del jugador
+     */
     public void Juego(String nombre, int vida, int poder, int materialesRecolectados, int hadasRescatadas,
                  int poderMago, int vidaOgro, int poderOgro, int hadasconCasa, int areaActual, int areaPresente) {
         this.nombre = nombre;
@@ -135,9 +148,17 @@ public class DatosJuego {
         this.areaActual = areaActual;
         this.areaPresente = areaPresente;
     }
+    /**
+     * Aumenta la cantidad de hadas rescatadas por el jugador.
+     */
     public void aumentarHadas(){
         setHadasRescatadas(hadasRescatadas++);
     }
+    /**
+     * Reinicia las vidas del jugador y del ogro.
+     * Si el poder del jugador es mayor o igual a 30, la vida del ogro aumenta a 150.
+     * Si el poder del jugador es mayor o igual a 50, la vida del ogro aumenta a 300.
+     */
     public void resetearVidas() {
         vida = getVida();
         vidaOgro = 26;

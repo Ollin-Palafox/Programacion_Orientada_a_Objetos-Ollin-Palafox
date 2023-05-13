@@ -1,9 +1,22 @@
 package edu.ollin.palafox.RetoFinal.process;
-
 import java.util.Random;
 import java.util.Scanner;
-
+/**
+ * Esta clase representa el combate contra un ogro en el juego.
+ * Hereda de la clase DatosJuego y utiliza los atributos de vida y poder
+ * para representar la vida y el poder del personaje, y vidaOgro y poderOgro
+ * para representar la vida y el poder del ogro.
+ */
 public class Combate extends DatosJuego {
+    /**
+     * Este método maneja el combate contra el ogro.
+     * Permite al usuario atacar o salir del combate, y
+     * actualiza la vida del personaje y del ogro en cada turno.
+     * Si el personaje gana el combate, aumenta la cantidad de hadas rescatadas
+     * y lo mueve a la siguiente área del juego.
+     * Si el personaje pierde el combate, muestra un mensaje de derrota
+     * y lo devuelve al menú principal del juego.
+     */
     public void combateOgro() {
         System.out.println("El ogro puede atacarte o defenderse");
         System.out.println("Vencelo y rescataras 1 hada");
@@ -18,30 +31,30 @@ public class Combate extends DatosJuego {
             opcion = scanner.nextInt();
 
             switch (opcion) {
-                case 1:
+                case 1 -> {
                     opcion = r.nextInt(2) + 1;
                     switch (opcion) {
-                        case 1:
+                        case 1 -> {
                             System.out.println("El ogro te ataca y te quita " + poderOgro + " puntos de vida.");
                             vida -= poderOgro;
                             vidaOgro -= poder;
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("El ogro se defiende y el daño que le haces se reduce a la mitad.");
                             vidaOgro -= poder / 2;
-                            break;
+                        }
                     }
                     System.out.println("Tu vida: " + vida);
                     System.out.println("Vida del ogro: " + vidaOgro);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Has decidido salir del combate");
                     Movimiento movimiento = new Movimiento();
                     setNuevaArea(3);
                     movimiento.moverse(nuevaArea);
                     return;
-                default:
-                    System.out.println("Opción inválida. Escoge una opción válida.");
+                }
+                default -> System.out.println("Opción inválida. Escoge una opción válida.");
             }
 
             // Comprobar si la vida del ogro o la vida del personaje llegaron a 0
@@ -62,7 +75,13 @@ public class Combate extends DatosJuego {
         } while (vidaOgro > 0 && vida > 0);
     }
 
-
+    /**
+     * Este método se encarga de aumentar el poder del mago
+     * dependiendo de la cantidad de hadas rescatadas.
+     * Si la cantidad de hadas es mayor que un número determinado,
+     * se muestra un mensaje y se aumenta el poder del mago.
+     * Luego, mueve al personaje a la siguiente área del juego.
+     */
     public void Victoria() {
         Movimiento movimiento = new Movimiento();
         if (getHadasconCasa()>9 && getHadasconCasa()<20){
