@@ -2,7 +2,7 @@ package edu.ollin.palafox.reto6.process;
 import java.util.Random;
 
 /**
- *aqui encontraremos el proceso con el cual elaboramos el codigo del porgrama es decir que esto es solo la parte de procesos
+ * Aqui encontraremos el proceso con el cual elaboramos el codigo del porgrama es decir que esto es solo la parte de procesos
  */
 public class Juegopalabras {
 

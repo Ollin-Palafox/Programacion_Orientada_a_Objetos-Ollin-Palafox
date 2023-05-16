@@ -4,10 +4,16 @@ import java.util.Scanner;
 
 import static edu.ollin.palafox.reto5.process.Juegopalabras.ObtenerPalabra;
 
-/** en este apartado esta el menu de interfaz el cual esta creado para que solo te arroje los resultados con los que el usuario va a interactuar con dicho programa
- *
+/**
+ * Esta clase representa la interfaz de línea de comandos (CLI) para el juego de palabras.
+ * Permite al usuario interactuar con el juego a través de un menú.
  */
 public class CLI {
+
+    /**
+     * Muestra el menú de opciones y permite al usuario interactuar con el juego.
+     * El juego se ejecuta hasta que el usuario ingrese "0" para salir.
+     */
     public static void MuestraElMenu() {
         Scanner teclado = new Scanner(System.in);
         String entrada = "";
@@ -18,40 +24,61 @@ public class CLI {
             System.out.println("(2) --> Intermedio");
             System.out.println("(3) --> Avanzado");
             System.out.println("(0) --> SALIR");
-            entrada = teclado.nextLine();
 
-            if (!entrada.equals("0")) {
-                //Pedimos una palabra en base al nivel de dificultad
+            try {
+                entrada = teclado.nextLine();
+
+                if (entrada.equals("0")) {
+                    System.out.println("\n\nFIN DEL PROGRAMA");
+                    break;
+                }
+
+                int nivel = Integer.parseInt(entrada);
+
+                if (nivel < 1 || nivel > 3) {
+                    throw new IllegalArgumentException("Opción no válida.");
+                }
+
+                // Pedimos una palabra en base al nivel de dificultad
                 String palabra = ObtenerPalabra(entrada);
 
-                if (palabra == null) //Si hemos recibido null, es porque la opcion no es válida
+                if (palabra == null) {
                     System.out.println("Escoja una opción válida.");
-                else {
+                } else {
                     String letra = "";
                     System.out.print("\nPruebe una letra [0 = SALIR]: ");
                     letra = teclado.nextLine().toLowerCase();
                     {
                         while (!letra.equals("0")) {
-                            if (palabra.contains(letra)) {
-                                //Mostramos palabra pero solo enseñando la letra coincidente
-                                System.out.println("\nEsa letra SI existe en la palabra:");
-                                for (int i = 0; i < palabra.length(); i++) {
-                                    if (palabra.charAt(i) == letra.charAt(0)) //Entonces es la letra coincidente
-                                        System.out.print(palabra.charAt(i));
-                                    else //Si no se tapa con un asterisco
-                                        System.out.print('*');
+                            if (letra.length() != 1 || !Character.isLetter(letra.charAt(0))) {
+                                System.out.println("Por favor, ingrese solo una letra.");
+                            } else {
+                                if (palabra.contains(letra)) {
+                                    System.out.println("\nEsa letra SI existe en la palabra:");
+                                    for (int i = 0; i < palabra.length(); i++) {
+                                        if (palabra.charAt(i) == letra.charAt(0)) {
+                                            System.out.print(palabra.charAt(i));
+                                        } else {
+                                            System.out.print('*');
+                                        }
+                                    }
+                                } else {
+                                    System.out.println("Esa letra NO existe en la palabra");
                                 }
-                            } else
-                                System.out.println("Esa letra NO existe en la palabra");
+                            }
 
                             System.out.print("\nPruebe otra letra [0 = SALIR]: ");
                             letra = teclado.nextLine();
                         }
                     }
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Opción no válida. Por favor, ingrese un número.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
-            //cerramos el codigo con un mensaje y con teclado.close para acabarlo
-            System.out.println("\n\nFIN DEL PROGRAMA");
         }
+
+        teclado.close();
     }
 }
