@@ -1,0 +1,10 @@
+Laura,26,TEG86
+Jorge,38,LID55
+Luis,28,TGZ80
+María,40,RGH85
+Juan,32,VFX90
+Pedro,26,KWZ7
+Sofía,40,CMQ79
+José,28,GVR36
+Ana,38,KGM26
+Carla,36,VSL72
